@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import { useLocation } from 'react-router-dom'
 import { Navbar } from '../Components/Navbar/navbar'
 import { Infobar } from '../Components/Infobar/infobar'
@@ -12,6 +14,14 @@ export const PlayPage = () => {
         <>
             <Navbar title={title}/>
             <div className='playContents'>
+                <div className='bookContainer'>
+                    <div className='leftPage'>
+
+                    </div>
+                    <div className='rightPage'>
+
+                    </div>
+                </div>
                 <div>
                     {title}
                 </div>
