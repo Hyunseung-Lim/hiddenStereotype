@@ -9,8 +9,6 @@ import data_2 from '../Data/book2';
 export const MainPage = () => {
   const [userName, setUserName] = useState(null);
 
-  const [userName, setUserName] = useState(null);
-
   function changeUserName(name) {
     setUserName(name);
   }

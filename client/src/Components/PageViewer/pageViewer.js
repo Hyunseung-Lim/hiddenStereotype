@@ -82,6 +82,7 @@ export const PageViewer = (props) => {
 
               props.setData((data) => {
                 const target = data[props.num - 1];
+                if (target.check === undefined) target['check'] = [];
                 const targetIdx = target.check.findIndex(
                   (item) => item.username === props.name
                 );
@@ -110,21 +111,24 @@ export const PageViewer = (props) => {
               stroke='#b13138'
               strokeWidth='4'
             />
-            {props.data[props.num - 1].check
-              .map((item) => item.checkByUser)
-              .reduce((prev, next) => prev.concat(next))
-              .map((circle, index) => (
-                <ellipse
-                  key={index}
-                  cx={circle.x * size.width}
-                  cy={circle.y * size.height}
-                  rx={circle.rx * size.width}
-                  ry={circle.ry * size.height}
-                  fill='#ffffff00'
-                  stroke='#b13138'
-                  strokeWidth='4'
-                />
-              ))}
+            {props.data[props.num - 1].check &&
+            props.data[props.num - 1].check.length !== 0
+              ? props.data[props.num - 1].check
+                  .map((item) => item.checkByUser)
+                  .reduce((prev, next) => prev.concat(next))
+                  .map((circle, index) => (
+                    <ellipse
+                      key={index}
+                      cx={circle.x * size.width}
+                      cy={circle.y * size.height}
+                      rx={circle.rx * size.width}
+                      ry={circle.ry * size.height}
+                      fill='#ffffff00'
+                      stroke='#b13138'
+                      strokeWidth='4'
+                    />
+                  ))
+              : null}
           </svg>
         </>
       ) : null}
