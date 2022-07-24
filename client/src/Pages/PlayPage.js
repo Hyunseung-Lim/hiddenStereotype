@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import { Navbar } from '../Components/Navbar/navbar';
@@ -10,27 +10,28 @@ import './pages.css';
 export const PlayPage = () => {
   // Get title and data from Mainpage
   const location = useLocation();
-  const { title, data } = location.state;
+  const { title, data, name } = location.state;
 
   // Define page number
   const [leftPageNum, setLeftPageNum] = useState(0);
   const [rightPageNum, setRightPageNum] = useState(1);
   const pageContainerRef = useRef(null);
   const pageRef = useRef(null);
+  const [stateData, setStateData] = useState(data);
 
-  function prevPage() {
+  const prevPage = useCallback(() => {
     if (leftPageNum > 0) {
       setLeftPageNum(leftPageNum - 2);
       setRightPageNum(rightPageNum - 2);
     }
-  }
+  }, [leftPageNum, rightPageNum]);
 
-  function nextPage() {
+  const nextPage = useCallback(() => {
     if (data.length > rightPageNum) {
       setLeftPageNum(leftPageNum + 2);
       setRightPageNum(rightPageNum + 2);
     }
-  }
+  }, [data.length, leftPageNum, rightPageNum]);
 
   return (
     <div className='container'>
@@ -42,8 +43,18 @@ export const PlayPage = () => {
           </button>
           <div className='pageContainer' ref={pageContainerRef}>
             <div className='pages' ref={pageRef}>
-              <PageViewer num={leftPageNum} data={data} />
-              <PageViewer num={rightPageNum} data={data} />
+              <PageViewer
+                num={leftPageNum}
+                name={name}
+                data={stateData}
+                setData={setStateData}
+              />
+              <PageViewer
+                num={rightPageNum}
+                name={name}
+                data={stateData}
+                setData={setStateData}
+              />
             </div>
           </div>
           <button className='btn' onClick={nextPage}>
