@@ -70,9 +70,14 @@
   margin-right: auto;
 }
 
-.pageContainer > div > div > img {
+.pageContainer > div > div > img,
+.pageContainer > div > div > canvas {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.btn {
+  width: 50px;
 }

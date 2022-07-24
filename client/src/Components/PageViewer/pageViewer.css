@@ -1,0 +1,9 @@
+.pv_container {
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
