@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+.mainPageTitle {
+    margin: 20px;
+    font-size: 24px;
+    font-weight: 800;
+}
+
 .bookBtnContainer {
     display: flex;
     flex-direction: row;
@@ -20,7 +26,6 @@
 .bookCover {
     width: 20vw;
 }
-
 
 
 .playContents {
