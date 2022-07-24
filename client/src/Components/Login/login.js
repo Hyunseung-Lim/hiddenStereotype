@@ -1,18 +1,36 @@
+import React, { useState } from 'react'
 import './login.css';
 
 export const Login = (props) => {
 
-    if(props.username == null)
-    return(
-        <div>
-            <input type='email' placeholder='참가번호'></input>
-            <button> login </button>
-        </div>
-    )
+    const [userName, setUserName ] = useState(props.username);
+
+    const nameHandler = (e) => {
+        e.preventDefault();
+        setUserName(e.target.value);
+    }
+
+    function login() {
+        props.changeUserName(userName);
+    }
+
+    function logout() {
+        setUserName(null);
+        props.changeUserName(null);
+    }
+
+    if(props.getUserName() == null)
+        return(
+            <div>
+                <input type='name' placeholder='참가자' onChange={nameHandler}></input>
+                <button onClick={login}> login </button>
+            </div>
+        )
     else
-    return(
-        <>
-            hi {props.username}
-        </>
-    )
+        return(
+            <>
+                HI! {props.getUserName()}
+                <button onClick={logout}> logout </button>
+            </>
+        )
 }

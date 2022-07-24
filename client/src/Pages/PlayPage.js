@@ -10,7 +10,7 @@ import './pages.css';
 export const PlayPage = () => {
   // Get title and data from Mainpage
   const location = useLocation();
-  const { title, data } = location.state;
+  const { title, data, name } = location.state;
 
   // Define page number
   const [leftPageNum, setLeftPageNum] = useState(0);
