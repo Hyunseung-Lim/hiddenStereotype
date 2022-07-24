@@ -10,3 +10,5 @@ const data = [
     {id:9, image:'book1/9.png'},
     {id:10, image:'book1/10.png'}
 ]
+
+export default data
