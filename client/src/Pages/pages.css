@@ -1,3 +1,28 @@
+.mainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookBtnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.bookBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.bookCover {
+    width: 20vw;
+}
+
+
+
 .playContents {
     background-color: lightgray;
     display: flex;
