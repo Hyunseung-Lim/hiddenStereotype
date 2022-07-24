@@ -6,11 +6,11 @@
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .tools {
   margin-left: 20px;
-  margin-right: 30vw;
 }
 
 .cursorIcon {
@@ -20,4 +20,13 @@
 
 .penIcon {
   height: 18px;
+}
+
+.submitBtn {
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #00B7A1;
+  color: white;
+  margin-right: 20px;
 }

@@ -3,5 +3,20 @@
   width: 200px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.infoType {
+    margin-top: 20px;
+}
+
+.infoBtn {
+    margin: 10px;
+}
+
+.stereoNum {
+    margin: 40px 0 20px;
+    font-size: 40px;
+    font-weight: 700;
 }

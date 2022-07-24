@@ -26,11 +26,11 @@ export const MainPage = () => {
             </div>
             <Login userName={userName} changeUserName={changeUserName} getUserName={getUserName}/> 
             <div className='bookBtnContainer'>
-                <Link className='bookBtn' to={'/play'} state={{title: "종이 봉지 공주", data: data_1, name: userName}}>
+                <Link className='bookBtn' style={{textDecoration: 'none'}} to={'/play'} state={{title: "종이 봉지 공주", data: data_1, name: userName}}>
                     <img className='bookCover' src='book1/cover.jpg'/>
                     종이 봉지 공주
                 </Link>
-                <Link className='bookBtn' to={'/play'} state={{title: "치과 의사 드소토 선생님", data: data_2, name: userName}}>
+                <Link className='bookBtn' style={{textDecoration: 'none'}} to={'/play'} state={{title: "치과 의사 드소토 선생님", data: data_2, name: userName}}>
                     <img className='bookCover' src='book2/cover.jpg'/>
                     치과 의사 드소토 선생님
                 </Link>
