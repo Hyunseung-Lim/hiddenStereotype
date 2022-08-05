@@ -1,29 +1,49 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import axios from "axios"
 
-import { Login } from '../Components/Login/login';
+import { Logout } from '../Components/Login/logout';
 
 import data_1 from '../Data/book1';
 import data_2 from '../Data/book2';
 
-export const MainPage = () => {
+export const MainPage = (props) => {
   const [userName, setUserName] = useState(null);
+  const [profileData, setProfileData] = useState({'name':null})
 
-  function changeUserName(name) {
-    setUserName(name);
+  function getData() {
+    axios({
+      method: "GET",
+      url:"/profile",
+      headers: {
+        Authorization: 'Bearer ' + props.token
+      }
+    })
+    .then((response) => {
+      const res =response.data
+      res.access_token && props.setToken(res.access_token)
+      setProfileData(({
+        name: res.name
+      }))
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })
   }
 
-  function getUserName() {
-    return userName;
-  }
+  useEffect(() => {
+    getData()
+  }, []);
 
   return (
     <div className='mainPage'>
       <div className='mainPageTitle'>숨은 고정관념 찾기</div>
-      <Login
-        userName={userName}
-        changeUserName={changeUserName}
-        getUserName={getUserName}
+      <Logout
+        name={profileData.name}
+        removeToken={props.removeToken}
       />
       <div className='bookBtnContainer'>
         <Link

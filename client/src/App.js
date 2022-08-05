@@ -6,16 +6,28 @@ import {
 } from 'react-router-dom';
 import { MainPage } from './Pages/MainPage';
 import { PlayPage } from './Pages/PlayPage';
+import { LoginPage } from './Pages/LoginPage';
+
+import useToken from './Components/useToken';
 import './App.css';
 
 function App() {
+
+  const { token, removeToken, setToken } = useToken();
+
   return (
     <Router>
       <div className='App' id='app__wrap'>
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/play' element={<PlayPage />} />
-        </Routes>
+        {!token && token!=="" &&token!== undefined?
+          <LoginPage setToken={setToken}/>
+          :
+          <>
+            <Routes>
+              <Route path='/' element={<MainPage token={token} setToken={setToken} removeToken={removeToken}/>} />
+              <Route path='/play' element={<PlayPage token={token} setToken={setToken}/>} />
+            </Routes>
+          </>
+        }
       </div>
     </Router>
   );
