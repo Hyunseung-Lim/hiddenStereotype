@@ -8,6 +8,12 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
     photo = db.Column(db.String(1000))
     posts = db.Column(db.Integer)
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
+    num = db.Column(db.Integer)
+    name = db.Column(db.String(1000))
+    bookData = db.Column(db.JSON)
     
 # class Post(db.Model):
 #     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy

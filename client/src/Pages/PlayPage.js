@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import axios from "axios"
 
 import { useLocation } from 'react-router-dom';
 import { Navbar } from '../Components/Navbar/navbar';
@@ -10,7 +11,7 @@ import './pages.css';
 export const PlayPage = () => {
   // Get title and data from Mainpage
   const location = useLocation();
-  const { title, data, name } = location.state;
+  const { title, data, bookNum, name } = location.state;
 
   // Define page number
   const [leftPageNum, setLeftPageNum] = useState(0);
@@ -32,6 +33,15 @@ export const PlayPage = () => {
       setRightPageNum(rightPageNum + 2);
     }
   }, [data.length, leftPageNum, rightPageNum]);
+
+  // update Database by axios
+
+  function updateData() {
+    axios({
+      method: "POST",
+      url:"/updateBook",
+      data: { bookNum: bookNum, bookData: data }
+    })}
 
   return (
     <div className='container'>

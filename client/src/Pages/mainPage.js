@@ -10,6 +10,7 @@ import data_2 from '../Data/book2';
 export const MainPage = (props) => {
   const [userName, setUserName] = useState(null);
   const [profileData, setProfileData] = useState({'name':null})
+  const [booksData, setBooksData] = useState([{'num':null, 'name':null, 'bookData':null}, {'num':null, 'name':null, 'bookData':null}])
 
   function getData() {
     axios({
@@ -25,6 +26,7 @@ export const MainPage = (props) => {
       setProfileData(({
         name: res.name
       }))
+      setBooksData(res.books)
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -50,7 +52,12 @@ export const MainPage = (props) => {
           className='bookBtn'
           style={{ textDecoration: 'none' }}
           to={'/play'}
-          state={{ title: '종이 봉지 공주', data: data_1, name: userName }}
+          state={{
+            title: '종이 봉지 공주', 
+            data: booksData[0].bookData,
+            bookNum: booksData[0].num,
+            name: userName
+          }}
         >
           <img className='bookCover' src='book1/cover.jpg' />
           종이 봉지 공주
@@ -61,8 +68,9 @@ export const MainPage = (props) => {
           to={'/play'}
           state={{
             title: '치과 의사 드소토 선생님',
-            data: data_2,
-            name: userName,
+            data: booksData[1].bookData,
+            booknum: booksData[1].num,
+            name: userName
           }}
         >
           <img className='bookCover' src='book2/cover.jpg' />

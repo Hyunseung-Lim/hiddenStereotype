@@ -7,6 +7,7 @@ import {
 import { MainPage } from './Pages/MainPage';
 import { PlayPage } from './Pages/PlayPage';
 import { LoginPage } from './Pages/LoginPage';
+import { ManagePage } from './Pages/ManagePage';
 
 import useToken from './Components/useToken';
 import './App.css';
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path='/' element={<MainPage token={token} setToken={setToken} removeToken={removeToken}/>} />
               <Route path='/play' element={<PlayPage token={token} setToken={setToken}/>} />
+              <Route path='/manage' element={<ManagePage/>}/>
             </Routes>
           </>
         }

@@ -4,7 +4,7 @@ from flask_cors import cross_origin
 from flask_jwt_extended import create_access_token,get_jwt,get_jwt_identity, unset_jwt_cookies, jwt_required, JWTManager
 from datetime import datetime, timedelta, timezone
 from __init__ import create_app, db
-from models import User
+from models import User, Book
 import json
 import os
 
@@ -89,7 +89,51 @@ def logout():
 def profile():
     user = User.query.filter_by(email=get_jwt_identity()).first()
     name = user.name
-    return {"name": name}
+    books = Book.query.all()
+    books_data = []
+    for book in books:
+        book_data = {
+            "num": book.num,
+            "name": book.name,
+            "bookData": book.bookData
+        }
+        books_data.append(book_data)
+    response = jsonify({"name": name, "books": books_data})
+    return response
+
+@main.route("/resetbook", methods=["POST"])
+@cross_origin()
+def resetbook():
+    db.session.query(Book).delete()
+    params = request.get_json()
+    book1Data = params['book1']
+    book2Data = params['book2']
+    new_book1 = Book(
+        num = 1,
+        name = 'book1',
+        bookData = book1Data
+    )
+    new_book2 = Book(
+        num = 2,
+        name = 'book2',
+        bookData = book2Data
+    )
+    db.session.add(new_book1)
+    db.session.add(new_book2)
+    db.session.commit()
+    return {"msg": "reset book successful"}
+
+# @main.route("/updatebook", methods=["POST"])
+# @cross_origin()
+# def updatebook():
+
+
+
+# @main.route("/book")
+# @jwt_required()
+# def book():
+    
+    
 
 # @main.route("/home")
 # @jwt_required()
