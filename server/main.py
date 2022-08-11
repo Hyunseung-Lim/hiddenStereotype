@@ -123,9 +123,16 @@ def resetbook():
     db.session.commit()
     return {"msg": "reset book successful"}
 
-# @main.route("/updatebook", methods=["POST"])
-# @cross_origin()
-# def updatebook():
+@main.route("/updatebook", methods=["POST"])
+@cross_origin()
+def updatebook():
+    params = request.get_json()
+    bookNum = params['bookNum']
+    bookData = params['bookData']
+    book = Book.query.filter_by(num=bookNum).first()
+    book.bookData = bookData
+    db.session.commit()
+    return {"msg": "update book successful"}
 
 
 

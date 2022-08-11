@@ -4,9 +4,6 @@ import './navbar.css'
 
 export const Navbar = (props) => {
 
-    function submit() {
-    }
-
     return(
         <>
             <nav className='navbar'>
@@ -17,7 +14,7 @@ export const Navbar = (props) => {
                 <div className='title'> 
                     {props.title}
                 </div>
-                <Link className='submitBtn' style={{textDecoration: 'none'}} to={'/'} onClick={submit} > 제출하기 </Link>
+                <Link className='submitBtn' style={{textDecoration: 'none'}} to={'/'} onClick={props.updateData} > 제출하기 </Link>
             </nav>
         </>
     )

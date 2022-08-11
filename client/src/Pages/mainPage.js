@@ -4,9 +4,6 @@ import axios from "axios"
 
 import { Logout } from '../Components/Login/logout';
 
-import data_1 from '../Data/book1';
-import data_2 from '../Data/book2';
-
 export const MainPage = (props) => {
   const [userName, setUserName] = useState(null);
   const [profileData, setProfileData] = useState({'name':null})
@@ -56,7 +53,7 @@ export const MainPage = (props) => {
             title: '종이 봉지 공주', 
             data: booksData[0].bookData,
             bookNum: booksData[0].num,
-            name: userName
+            userName: profileData.name
           }}
         >
           <img className='bookCover' src='book1/cover.jpg' />
@@ -69,8 +66,8 @@ export const MainPage = (props) => {
           state={{
             title: '치과 의사 드소토 선생님',
             data: booksData[1].bookData,
-            booknum: booksData[1].num,
-            name: userName
+            bookNum: booksData[1].num,
+            userName: profileData.name
           }}
         >
           <img className='bookCover' src='book2/cover.jpg' />

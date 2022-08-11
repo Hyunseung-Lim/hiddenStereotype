@@ -84,14 +84,14 @@ export const PageViewer = (props) => {
                 const target = data[props.num - 1];
                 if (target.check === undefined) target['check'] = [];
                 const targetIdx = target.check.findIndex(
-                  (item) => item.username === props.name
+                  (item) => item.userName === props.userName
                 );
                 if (targetIdx !== -1) {
                   console.log(targetIdx);
                   target.check[targetIdx].checkByUser.push(correctTempCircle);
                 } else {
                   target.check.push({
-                    username: props.name,
+                    userName: props.userName,
                     checkByUser: [correctTempCircle],
                   });
                 }
@@ -111,30 +111,50 @@ export const PageViewer = (props) => {
               stroke='#b13138'
               strokeWidth='4'
             />
-            {props.data[props.num - 1].check &&
-            props.data[props.num - 1].check.length !== 0
-              ? props.data[props.num - 1].check
-                  .map((item) => item.checkByUser)
-                  .reduce((prev, next) => prev.concat(next))
-                  .map((circle, index) => (
-                    <ellipse
-                      key={index}
-                      cx={circle.x * size.width}
-                      cy={circle.y * size.height}
-                      rx={circle.rx * size.width}
-                      ry={circle.ry * size.height}
-                      fill='#ffffff00'
-                      stroke='#b13138'
-                      strokeWidth='4'
-                    />
-                  ))
-              : null}
+            {props.data[props.num - 1].check && props.data[props.num - 1].check.length !== 0
+                ? props.data[props.num - 1].check.filter((item) => item.userName !== props.userName) && props.data[props.num - 1].check.filter((item) => item.userName !== props.userName).length !== 0
+                  ? props.data[props.num - 1].check.filter((item) => item.userName !== props.userName)
+                    .map((item) => item.checkByUser)
+                    .reduce((prev, next) => prev.concat(next))
+                    .map((circle, index) => (
+                      <ellipse
+                        key={index}
+                        cx={circle.x * size.width}
+                        cy={circle.y * size.height}
+                        rx={circle.rx * size.width}
+                        ry={circle.ry * size.height}
+                        fill='#FF9B2690'
+                      />
+                    ))
+                  : null
+                : null
+            }
+            {props.data[props.num - 1].check && props.data[props.num - 1].check.length !== 0
+                ? props.data[props.num - 1].check.filter((item) => item.userName === props.userName) && props.data[props.num - 1].check.filter((item) => item.userName === props.userName).length !== 0
+                  ? props.data[props.num - 1].check.filter((item) => item.userName === props.userName)
+                    .map((item) => item.checkByUser)
+                    .reduce((prev, next) => prev.concat(next))
+                    .map((circle, index) => (
+                      <ellipse
+                        key={index}
+                        cx={circle.x * size.width}
+                        cy={circle.y * size.height}
+                        rx={circle.rx * size.width}
+                        ry={circle.ry * size.height}
+                        fill='#ffffff00'
+                        stroke='#b13138'
+                        strokeWidth='4'
+                      />
+                    ))
+                  : null
+                : null}
           </svg>
         </>
       ) : null}
     </div>
   );
 };
+
 
 // /* eslint-disable react-hooks/exhaustive-deps */
 // import { useRef, useState, useEffect, useCallback } from 'react';

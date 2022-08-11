@@ -11,7 +11,7 @@ import './pages.css';
 export const PlayPage = () => {
   // Get title and data from Mainpage
   const location = useLocation();
-  const { title, data, bookNum, name } = location.state;
+  const { title, data, bookNum, userName } = location.state;
 
   // Define page number
   const [leftPageNum, setLeftPageNum] = useState(0);
@@ -39,13 +39,13 @@ export const PlayPage = () => {
   function updateData() {
     axios({
       method: "POST",
-      url:"/updateBook",
+      url:"/updatebook",
       data: { bookNum: bookNum, bookData: data }
     })}
 
   return (
     <div className='container'>
-      <Navbar title={title} />
+      <Navbar title={title} updateData={updateData}/>
       <div className='playContents'>
         <div className='bookContainer'>
           <button className='btn' onClick={prevPage}>
@@ -55,13 +55,13 @@ export const PlayPage = () => {
             <div className='pages' ref={pageRef}>
               <PageViewer
                 num={leftPageNum}
-                name={name}
+                userName={userName}
                 data={stateData}
                 setData={setStateData}
               />
               <PageViewer
                 num={rightPageNum}
-                name={name}
+                userName={userName}
                 data={stateData}
                 setData={setStateData}
               />
