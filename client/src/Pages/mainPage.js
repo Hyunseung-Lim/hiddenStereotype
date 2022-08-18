@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
 
-import { Logout } from '../Components/Login/logout';
+import { MainNavbar } from '../Components/Navbar/mainNavbar';
 
 export const MainPage = (props) => {
   const [userName, setUserName] = useState(null);
@@ -39,11 +39,11 @@ export const MainPage = (props) => {
 
   return (
     <div className='mainPage'>
-      <div className='mainPageTitle'>숨은 고정관념 찾기</div>
-      <Logout
+      <MainNavbar
         name={profileData.name}
         removeToken={props.removeToken}
       />
+      <div className='mainPageTitle'>숨은 고정관념 찾기</div>
       <div className='bookBtnContainer'>
         <Link
           className='bookBtn'

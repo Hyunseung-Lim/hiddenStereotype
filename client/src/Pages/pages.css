@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "HSUG";
+  src: url("../Font/HS유지체.ttf") format("truetype");
+  font-weight: normal;
+}
+
 .mainPage {
   display: flex;
   flex-direction: column;
@@ -6,8 +12,9 @@
 
 .mainPageTitle {
   margin: 20px;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: 'HSUG';
 }
 
 .bookBtnContainer {

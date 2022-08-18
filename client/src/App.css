@@ -40,7 +40,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #f3f5f8;
+  background-color: #f8f8f8;
 }
 
 #app__wrap > div {

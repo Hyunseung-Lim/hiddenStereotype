@@ -44,17 +44,21 @@ export const Signin = (props) => {
 
     return(
         <>
-            <div className='signinholder'>
+            <div className='signholder'>
                 <form className='signinbox' onSubmit={submitHander}>
-                    <input type="email" value={email} onChange={emailHandler}></input>
-                    <input type="password" value={password} onChange={passwordHandler} autoComplete="on"></input>
-                    <button type="submit">
-                        login
+                    <div className='signinTitle'>
+                        숨은 고정관념 찾기
+                    </div>
+                    <input className='signInput' type="email" value={email} onChange={emailHandler} placeholder={'이메일'}></input>
+                    <input className='signInput' type="password" value={password} onChange={passwordHandler} placeholder={'비밀번호'} autoComplete="on"></input>
+                    <button className='loginBtn' type="submit">
+                        로그인
                     </button>
                 </form>
-                <div className='signupbox'>
+                <div className='createAccountbox'>
+                    계정이 없으신가요?
                     <button onClick={() => props.setIsSignup()}>
-                        sign up
+                        가입하기
                     </button>
                 </div>   
             </div>
