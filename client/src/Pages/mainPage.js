@@ -43,7 +43,7 @@ export const MainPage = (props) => {
         name={profileData.name}
         removeToken={props.removeToken}
       />
-      <div className='mainPageTitle'>숨은 고정관념 찾기</div>
+      <div className='mainPageTitle'>읽고 싶은 책을 선택해주세요.</div>
       <div className='bookBtnContainer'>
         <Link
           className='bookBtn'

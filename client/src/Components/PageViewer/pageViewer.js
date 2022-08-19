@@ -111,7 +111,7 @@ export const PageViewer = (props) => {
               stroke='#b13138'
               strokeWidth='4'
             />
-            {props.data[props.num - 1].check && props.data[props.num - 1].check.length !== 0
+            {props.infoType == 3 && props.data[props.num - 1].check && props.data[props.num - 1].check.length !== 0
                 ? props.data[props.num - 1].check.filter((item) => item.userName !== props.userName) && props.data[props.num - 1].check.filter((item) => item.userName !== props.userName).length !== 0
                   ? props.data[props.num - 1].check.filter((item) => item.userName !== props.userName)
                     .map((item) => item.checkByUser)
@@ -147,7 +147,8 @@ export const PageViewer = (props) => {
                       />
                     ))
                   : null
-                : null}
+                : null
+            }
           </svg>
         </>
       ) : null}

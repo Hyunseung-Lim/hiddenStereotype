@@ -26,9 +26,12 @@ export const MainNavbar = (props) => {
             <nav className='mainNavbar'>
                 <div className='navbarContainer'>
                     <div className='title'> 
-                        HI! {props.name}
+                        숨은 고정관념 찾기
                     </div>
-                    <button className='submitBtn' onClick={logout}> logout </button>                    
+                    <div>
+                        {props.name} 님
+                        <button className='submitBtn' onClick={logout}> logout </button>                              
+                    </div>
                 </div>
             </nav>
         </>

@@ -1,9 +1,3 @@
-@font-face {
-  font-family: "HSUG";
-  src: url("../Font/HS유지체.ttf") format("truetype");
-  font-weight: normal;
-}
-
 .mainPage {
   display: flex;
   flex-direction: column;
@@ -12,9 +6,7 @@
 
 .mainPageTitle {
   margin: 20px;
-  font-size: 40px;
-  font-weight: 700;
-  font-family: 'HSUG';
+  font-size: 24px;
 }
 
 .bookBtnContainer {
@@ -28,6 +20,7 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
+  font-size: 20px;
 }
 
 .bookCover {
@@ -51,11 +44,13 @@
 
 .bookContainer {
   display: flex;
+  position: relative;
   height: 100%;
   width: 100%;
 }
 
 .pageContainer {
+  z-index: 0;
   display: flex;
   width: 100%;
   height: 100%;
@@ -85,6 +80,29 @@
   object-fit: contain;
 }
 
-.btn {
-  width: 50px;
+.bookContainer > .leftBtn {
+  transform: translate(10%, 0%);
+}
+
+.bookContainer > .rightBtn {
+  left: 100%;
+  transform: translate(-110%, 0%);
+}
+
+.turnBtn {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  z-index: 1;
+  background-color:transparent;
+  border: 0;
+}
+
+.turnBtn > img {
+  width: 60px;
+  opacity:0.3;
+}
+
+.turnBtn > img:hover {
+  opacity:0.4;
 }

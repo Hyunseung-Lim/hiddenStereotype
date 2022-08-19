@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "HSUG";
+  src: url("../../Font/HS유지체.ttf") format("truetype");
+  font-weight: normal;
+}
+
+
 .navbar {
   width: 100vw;
   z-index: 1;
@@ -28,7 +35,7 @@
   font-size: 14px;
   background-color: #00B7A1;
   color: white;
-  margin-right: 20px;
+  margin: 0 20px;
 }
 
 .mainNavbar {
@@ -50,4 +57,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.navbarContainer > .title {
+  font-size: 20px;
+  font-family: 'HSUG';
 }

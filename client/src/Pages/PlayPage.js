@@ -34,6 +34,20 @@ export const PlayPage = () => {
     }
   }, [data.length, leftPageNum, rightPageNum]);
 
+  // change Infobar State
+
+  const [ infoType, setInfoType ] = useState(1) 
+
+  function setTypeOne () {
+      setInfoType(1);
+  }
+  function setTypeTwo () {
+      setInfoType(2);
+  }
+  function setTypeThree () {
+      setInfoType(3);
+  }
+
   // update Database by axios
 
   function updateData() {
@@ -48,18 +62,20 @@ export const PlayPage = () => {
       <Navbar title={title} updateData={updateData}/>
       <div className='playContents'>
         <div className='bookContainer'>
-          <button className='btn' onClick={prevPage}>
-            <span>prev</span>
+          <button className='turnBtn leftBtn' onClick={prevPage}>
+            <img src="img/leftBtn.png"/>
           </button>
           <div className='pageContainer' ref={pageContainerRef}>
             <div className='pages' ref={pageRef}>
               <PageViewer
+                infoType={infoType}
                 num={leftPageNum}
                 userName={userName}
                 data={stateData}
                 setData={setStateData}
               />
               <PageViewer
+                infoType={infoType}
                 num={rightPageNum}
                 userName={userName}
                 data={stateData}
@@ -67,11 +83,11 @@ export const PlayPage = () => {
               />
             </div>
           </div>
-          <button className='btn' onClick={nextPage}>
-            <span>next</span>
+          <button className='turnBtn rightBtn' onClick={nextPage}>
+            <img src="img/rightBtn.png"/>
           </button>
         </div>
-        <Infobar />
+        <Infobar infoType={infoType} setTypeOne={setTypeOne} setTypeTwo={setTypeTwo} setTypeThree={setTypeThree} />
       </div>
     </div>
   );
